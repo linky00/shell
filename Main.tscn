@@ -1,44 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://media/small.ogv" type="VideoStream" id=1]
-[ext_resource path="res://VideoPlayer.gd" type="Script" id=2]
-[ext_resource path="res://media/2020-01-18 16-57-56.ogv" type="VideoStream" id=3]
+[ext_resource path="res://TextSpawn.gd" type="Script" id=1]
+[ext_resource path="res://Graphics.gd" type="Script" id=2]
+[ext_resource path="res://layers/TextLayer.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CanvasItemMaterial" id=1]
-blend_mode = 3
+[node name="Main" type="Node"]
 
-[sub_resource type="CanvasItemMaterial" id=2]
-blend_mode = 3
-
-[node name="Main" type="Control"]
+[node name="Graphics" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+text_layer_scene = ExtResource( 3 )
+
+[node name="TextSpawnArea" type="Control" parent="Graphics"]
+margin_left = 46.0
+margin_top = 19.0
+margin_right = 844.0
+margin_bottom = 579.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VideoPlayer" type="VideoPlayer" parent="."]
-material = SubResource( 1 )
-margin_right = 1024.0
-margin_bottom = 600.0
-stream = ExtResource( 1 )
-autoplay = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextSpawn" type="Node" parent="."]
+script = ExtResource( 1 )
 
-[node name="VideoPlayer2" type="VideoPlayer" parent="."]
-material = SubResource( 2 )
-margin_left = 48.0
-margin_top = 52.0
-margin_right = 877.0
-margin_bottom = 475.0
-stream = ExtResource( 3 )
-autoplay = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
-[connection signal="finished" from="VideoPlayer2" to="VideoPlayer2" method="_on_VideoPlayer_finished"]
+[node name="Timer" type="Timer" parent="TextSpawn"]
+
+[node name="VideoSpawn" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="VideoSpawn"]
+[connection signal="spawn_text_layer" from="TextSpawn" to="Graphics" method="_on_TextSpawn_spawn_text_layer"]
+[connection signal="timeout" from="TextSpawn/Timer" to="TextSpawn" method="_on_Timer_timeout"]
