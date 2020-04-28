@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://TextSpawn.gd" type="Script" id=1]
+[ext_resource path="res://spawner/TextSpawn.gd" type="Script" id=1]
 [ext_resource path="res://Graphics.gd" type="Script" id=2]
 [ext_resource path="res://layers/TextLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://spawner/VideoSpawn.gd" type="Script" id=4]
+[ext_resource path="res://layers/VideoLayer.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node"]
 
@@ -15,6 +17,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 text_layer_scene = ExtResource( 3 )
+video_layer_scene = ExtResource( 6 )
 
 [node name="TextSpawnArea" type="Control" parent="Graphics"]
 margin_left = 46.0
@@ -25,13 +28,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextSpawn" type="Node" parent="."]
+[node name="TextSpawn" type="Timer" parent="."]
 script = ExtResource( 1 )
+min_time = 2.0
+max_time = 4.0
 
-[node name="Timer" type="Timer" parent="TextSpawn"]
-
-[node name="VideoSpawn" type="Node" parent="."]
-
-[node name="Timer" type="Timer" parent="VideoSpawn"]
+[node name="VideoSpawn" type="Timer" parent="."]
+script = ExtResource( 4 )
 [connection signal="spawn_text_layer" from="TextSpawn" to="Graphics" method="_on_TextSpawn_spawn_text_layer"]
-[connection signal="timeout" from="TextSpawn/Timer" to="TextSpawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TextSpawn" to="TextSpawn" method="_on_timeout"]
+[connection signal="spawn_video_layer" from="VideoSpawn" to="Graphics" method="_on_VideoSpawn_spawn_video_layer"]
+[connection signal="timeout" from="VideoSpawn" to="VideoSpawn" method="_on_timeout"]

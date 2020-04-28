@@ -9,7 +9,6 @@ blend_mode = 3
 material = SubResource( 1 )
 margin_right = 1024.0
 margin_bottom = 600.0
-autoplay = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

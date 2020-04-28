@@ -1,13 +1,17 @@
+import os
 import markovify
 
-INPUT_FILE = "media/2-prepared/text/tweets.txt"
-OUTPUT_FILE = "media/3-echoes/text/tweets.txt"
+INPUT_FOLDER = "media/2-prepared/text"
+OUTPUT_FOLDER = "media/3-echoes/text"
+N = 1000
+LENGTH = 200
 
-with open(INPUT_FILE) as f:
-    file_text = f.read()
+for filename in os.listdir(INPUT_FOLDER):
+    with open(INPUT_FOLDER + "/" + filename) as f:
+        file_text = f.read()
 
-text_model = markovify.NewlineText(file_text, well_formed=False)
+    text_model = markovify.NewlineText(file_text, well_formed=False)
 
-with open(OUTPUT_FILE, 'w') as output:
-    for i in range(1000):
-        output.write(text_model.make_short_sentence(200) + ("\n" if i <= 998 else ""))
+    with open(OUTPUT_FOLDER + "/" + filename, 'w') as output:
+        for i in range(N):
+            output.write(text_model.make_short_sentence(LENGTH) + ("\n" if i <= N - 1 else ""))

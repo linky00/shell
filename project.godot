@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Timer",
+"class": "Spawn",
+"language": "GDScript",
+"path": "res://spawner/Spawn.gd"
+} ]
 _global_script_class_icons={
-
+"Spawn": ""
 }
 
 [application]
