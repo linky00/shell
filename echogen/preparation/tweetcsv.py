@@ -2,7 +2,6 @@
 Converts csv from https://www.vicinitas.io/ to markov-able text file
 """
 
-
 import csv
 import re
 import string

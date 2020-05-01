@@ -1,4 +1,4 @@
-extends Spawn
+extends RandomTimer
 
 signal spawn_text_layer(text)
 
@@ -21,6 +21,6 @@ func _ready():
 			break
 
 
-func spawn_layer():
+func activate():
 	randomize()
 	emit_signal("spawn_text_layer", text_echoes[randi() % text_echoes.size()])

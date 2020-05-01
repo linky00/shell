@@ -1,4 +1,4 @@
-extends Spawn
+extends RandomTimer
 
 signal spawn_video_layer(video)
 
@@ -17,7 +17,7 @@ func _ready():
 			break
 
 
-func spawn_layer():
+func activate():
 	randomize()
 	emit_signal("spawn_video_layer", video_echoes[randi() % video_echoes.size()])
 

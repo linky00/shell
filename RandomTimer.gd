@@ -1,4 +1,4 @@
-class_name Spawn
+class_name RandomTimer
 extends Timer
 
 export(float) var min_time = 3.0
@@ -9,7 +9,7 @@ func _ready():
 	reset_timer()
 
 
-func spawn_layer():
+func activate():
 	pass
 
 
@@ -20,4 +20,4 @@ func reset_timer():
 
 func _on_timeout():
 	reset_timer()
-	spawn_layer()
+	activate()

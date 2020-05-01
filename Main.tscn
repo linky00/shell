@@ -1,29 +1,34 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://spawner/TextSpawn.gd" type="Script" id=1]
 [ext_resource path="res://Graphics.gd" type="Script" id=2]
 [ext_resource path="res://layers/TextLayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://spawner/VideoSpawn.gd" type="Script" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
 [ext_resource path="res://layers/VideoLayer.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Timer"]
+script = ExtResource( 5 )
+min_time = 60.0
+max_time = 120.0
 
 [node name="Graphics" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 text_layer_scene = ExtResource( 3 )
 video_layer_scene = ExtResource( 6 )
 
 [node name="TextSpawnArea" type="Control" parent="Graphics"]
-margin_left = 46.0
-margin_top = 19.0
-margin_right = 844.0
-margin_bottom = 579.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.0
+margin_top = 25.0
+margin_right = -750.0
+margin_bottom = -181.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
