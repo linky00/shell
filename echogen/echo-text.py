@@ -1,8 +1,8 @@
 import os
 import markovify
 
-INPUT_FOLDER = "media/2-prepared/text"
-OUTPUT_FOLDER = "media/3-echoes/text"
+INPUT_FOLDER = "media/text"
+OUTPUT_FOLDER = "media/echoes/text"
 N = 1000
 LENGTH = 200
 

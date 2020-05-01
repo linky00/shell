@@ -6,8 +6,8 @@ import csv
 import re
 import string
 
-INPUT_FILE = "../media/1-original/text/tweet_data.csv"
-OUTPUT_FILE = "../media/2-prepared/text/tweets.txt"
+INPUT_FILE = "../media/unprepared/text/tweet_data.csv"
+OUTPUT_FILE = "../media/text/tweets.txt"
 
 with open(INPUT_FILE) as tweet_data:
     with open(OUTPUT_FILE, 'w') as output:

@@ -1,5 +1,5 @@
 """
-Converts mp4 to ogv (needs HandBrakeCLI)
+Converts mp4 to ogv (needs ffmpeg)
 """
 
 import os
@@ -12,4 +12,4 @@ for filename in os.listdir(INPUT_FOLDER):
     if extension == ".mp4":
         input_path = INPUT_FOLDER + "/" + filename
         output_path = OUTPUT_FOLDER + "/" + name + ".ogv"
-        os.system("HandBrakeCLI -i" + input_path + " -o" + output_path)
+        os.system("ffmpeg -i " + input_path + " -q:v 10 " + output_path)
