@@ -17,6 +17,7 @@ func _ready():
 			var contents = file.get_as_text()
 			file.close()
 			text_echoes += contents.split("\n")
+			text_echoes.remove(text_echoes.size() - 1)
 		else:
 			break
 
