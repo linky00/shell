@@ -3,7 +3,7 @@ extends Control
 export(PackedScene) var text_layer_scene
 export(PackedScene) var video_layer_scene
 export(int) var max_text_layers = 4
-export(int) var max_video_layers = 3
+export(int) var max_video_layers = 2
 var text_layers = []
 var video_layers = []
 
