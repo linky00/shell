@@ -36,5 +36,6 @@ __meta__ = {
 [node name="TextSpawn" parent="." instance=ExtResource( 1 )]
 
 [node name="VideoSpawn" parent="." instance=ExtResource( 7 )]
+[connection signal="new_video" from="Graphics" to="VideoSpawn" method="_on_Graphics_new_video"]
 [connection signal="spawn_text_layer" from="TextSpawn" to="Graphics" method="_on_TextSpawn_spawn_text_layer"]
 [connection signal="spawn_video_layer" from="VideoSpawn" to="Graphics" method="_on_VideoSpawn_spawn_video_layer"]

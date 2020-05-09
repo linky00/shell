@@ -21,3 +21,7 @@ func activate():
 	randomize()
 	emit_signal("spawn_video_layer", video_echoes[randi() % video_echoes.size()])
 
+
+
+func _on_Graphics_new_video():
+	override()

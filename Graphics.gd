@@ -1,5 +1,7 @@
 extends Control
 
+signal new_video
+
 export(PackedScene) var text_layer_scene
 export(PackedScene) var video_layer_scene
 export(int) var max_text_layers = 4
@@ -28,6 +30,7 @@ func _on_TextSpawn_spawn_text_layer(text):
 func _on_VideoSpawn_spawn_video_layer(video):
 	var video_layer = video_layer_scene.instance()
 	add_child(video_layer)
+	video_layer.connect("video_finished", self, "_on_VideoLayer_video_finished")
 	video_layer.stream = video
 	video_layer.play()
 	var video_size = video_layer.get_video_texture().get_size()
@@ -48,3 +51,7 @@ func _on_VideoSpawn_spawn_video_layer(video):
 	video_layers.append(video_layer)
 	if video_layers.size() > max_video_layers:
 		video_layers.pop_front().queue_free()
+
+
+func _on_VideoLayer_video_finished():
+	emit_signal("new_video")

@@ -18,6 +18,11 @@ func reset_timer():
 	start(rand_range(min_time, max_time))
 
 
+func override():
+	reset_timer()
+	activate()
+
+
 func _on_timeout():
 	reset_timer()
 	activate()
