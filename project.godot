@@ -33,5 +33,4 @@ window/stretch/aspect="keep"
 
 [rendering]
 
-vram_compression/import_etc=true
 environment/default_clear_color=Color( 1, 1, 1, 1 )
